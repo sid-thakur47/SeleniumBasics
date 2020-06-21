@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class HerokuAppNegativeTest {
 
-    @Test
+    @Test(groups = { "negativeTest", "smokeTest" })
     public void userNameTest() {
 
         //create driver
@@ -47,7 +47,7 @@ public class HerokuAppNegativeTest {
         webDriver.quit();
     }
 
-    @Test
+    @Test(groups = { "negativeTest"})
     public void passwordTest() {
 
         //create driver
