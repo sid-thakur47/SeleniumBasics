@@ -5,7 +5,7 @@
     <test name="HerokuAppNegativeTest">
         <groups>
             <run>
-                <include name="smokeTest"/>
+                <include name="smokeTest"/>  <!--include using group-->
             </run>
         </groups>
 
