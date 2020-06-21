@@ -8,9 +8,51 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class HerokuAppNegativeTest {
+public class LoginTest {
+
+    @Test(priority =1,groups = {"positiveTest", "smokeTest"})
+    public void positiveLoginTest() {
+        //create driver
+        System.setProperty("webdriver.chrome.driver", "C:/Users/Shivani/Desktop/SelinumDemo/src/main/resources/chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+
+        //open test page
+        String url = "http://the-internet.herokuapp.com/login";
+        webDriver.get(url);
+
+        //maximize window
+        webDriver.manage().window().fullscreen();
+
+        //verification
+        String actualUrl = "http://the-internet.herokuapp.com/login";
+        String expectedUrl = webDriver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl, "URL do not match");
+
+        //username
+        WebElement userName = webDriver.findElement(By.id("username"));
+        userName.sendKeys("tomsmith");
+
+        //password
+        WebElement password = webDriver.findElement(By.id("password"));
+        password.sendKeys("SuperSecretPassword!");
+
+        WebElement loginButton = webDriver.findElement(By.tagName("button"));
+        loginButton.click();
+
+        //logout
+        WebElement logoutButton = webDriver.findElement(By.xpath("//a[@class='button secondary radius']"));
+        logoutButton.click();
+
+        //success message
+        WebElement successMessage = webDriver.findElement(By.cssSelector("div#flash"));
+        successMessage.isDisplayed();
+
+        //close browser
+        webDriver.quit();
+    }
+
     @Parameters( {"username", "password", "expectedMessage"})
-    @Test(groups = {"negativeTest", "smokeTest"})
+    @Test(priority = 2,groups = {"negativeTest", "smokeTest"})
     public void negativeLoginTest(String userName, String password, String expectedMessage) {
 
         //create driver
@@ -47,42 +89,4 @@ public class HerokuAppNegativeTest {
         Assert.assertEquals(expectedMessage, actualMessage);
         webDriver.quit();
     }
-
-   /* @Test(groups = { "negativeTest"})
-    public void passwordTest() {
-
-        //create driver
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Shivani/Desktop/SelinumDemo/src/main/resources/chromedriver.exe");
-        WebDriver webDriver = new ChromeDriver();
-
-        //open test page
-        String url = "http://the-internet.herokuapp.com/login";
-        webDriver.get(url);
-
-        //maximize window
-        webDriver.manage().window().fullscreen();
-
-        //verification
-        String actualUrl = "http://the-internet.herokuapp.com/login";
-        String expectedUrl = webDriver.getCurrentUrl();
-        Assert.assertEquals(actualUrl, expectedUrl, "URL do not match");
-
-        //username
-        WebElement userName = webDriver.findElement(By.id("username"));
-        userName.sendKeys("tomsmith");
-
-        //password
-        WebElement password = webDriver.findElement(By.id("password"));
-        password.sendKeys("incorrectpassword");
-
-        WebElement loginButton = webDriver.findElement(By.tagName("button"));
-        loginButton.click();
-
-        //verification for incorrect username
-        WebElement errorMessage = webDriver.findElement(By.id("flash"));
-        String expectedMessage = "Your password is invalid! ×";
-        String actualMessage = errorMessage.getText();
-        Assert.assertEquals(expectedMessage, actualMessage);
-        webDriver.quit();
-    }*/
 }

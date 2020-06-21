@@ -2,12 +2,28 @@
 
 <suite name="NegativeTest" verbose="1">
 
+    <test name="PositiveTest">
+        <groups>
+            <run>
+                <include name="positiveTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.bl.selenium.LoginTest"/>
+        </classes>
+    </test>
+
     <test name="userNameTest">
         <parameter name="username" value="incorrectusername"/>
         <parameter name="password" value="SuperSecretPassword!"/>
         <parameter name="expectedMessage" value="Your username is invalid! ×"/>
         <classes>
-            <class name="com.bl.selenium.HerokuAppNegativeTest"/>
+            <class name="com.bl.selenium.LoginTest">
+                <methods>
+                    <include name="negativeLoginTest"/>
+
+                </methods>
+            </class>
 
         </classes>
     </test>
@@ -17,7 +33,12 @@
         <parameter name="password" value="kajcdkb;c"/>
         <parameter name="expectedMessage" value="Your password is invalid! ×"/>
         <classes>
-            <class name="com.bl.selenium.HerokuAppNegativeTest"/>
+            <class name="com.bl.selenium.LoginTest">
+                <methods>
+                    <include name="negativeLoginTest"/>
+
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
