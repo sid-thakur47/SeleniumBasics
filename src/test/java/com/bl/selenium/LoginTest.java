@@ -5,16 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTest {
 
-    @Test(priority =1,groups = {"positiveTest", "smokeTest"})
-    public void positiveLoginTest() {
+    private WebDriver webDriver;
+
+    @BeforeMethod
+    private void setup() {
         //create driver
         System.setProperty("webdriver.chrome.driver", "C:/Users/Shivani/Desktop/SelinumDemo/src/main/resources/chromedriver.exe");
-        WebDriver webDriver = new ChromeDriver();
+        webDriver = new ChromeDriver();
 
         //open test page
         String url = "http://the-internet.herokuapp.com/login";
@@ -22,6 +26,16 @@ public class LoginTest {
 
         //maximize window
         webDriver.manage().window().fullscreen();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    private void closeBrowser() {
+        //close browser
+        webDriver.quit();
+    }
+    @Parameters( {"username", "password","expectedMessage"})
+    @Test(priority = 1, groups = {"positiveTest", "smokeTest"})
+    public void positiveLoginTest(String username,String password,String expectedMessage) {
 
         //verification
         String actualUrl = "http://the-internet.herokuapp.com/login";
@@ -29,42 +43,33 @@ public class LoginTest {
         Assert.assertEquals(actualUrl, expectedUrl, "URL do not match");
 
         //username
-        WebElement userName = webDriver.findElement(By.id("username"));
-        userName.sendKeys("tomsmith");
+        WebElement usernameElement = webDriver.findElement(By.id("username"));
+        usernameElement.sendKeys(username);
 
         //password
-        WebElement password = webDriver.findElement(By.id("password"));
-        password.sendKeys("SuperSecretPassword!");
+        WebElement passwordElement = webDriver.findElement(By.id("password"));
+        passwordElement.sendKeys(password);
 
         WebElement loginButton = webDriver.findElement(By.tagName("button"));
         loginButton.click();
+        //success message
+        WebElement successMessage = webDriver.findElement(By.cssSelector("div#flash"));
+        successMessage.isDisplayed();
+
+        WebElement errorMessageElement = webDriver.findElement(By.id("flash-messages"));
+        String actualMessage = errorMessageElement.getText();
+        Assert.assertEquals(expectedMessage, actualMessage);
 
         //logout
         WebElement logoutButton = webDriver.findElement(By.xpath("//a[@class='button secondary radius']"));
         logoutButton.click();
 
-        //success message
-        WebElement successMessage = webDriver.findElement(By.cssSelector("div#flash"));
-        successMessage.isDisplayed();
 
-        //close browser
-        webDriver.quit();
     }
 
     @Parameters( {"username", "password", "expectedMessage"})
-    @Test(priority = 2,groups = {"negativeTest", "smokeTest"})
+    @Test(priority = 2, groups = {"negativeTest", "smokeTest"})
     public void negativeLoginTest(String userName, String password, String expectedMessage) {
-
-        //create driver
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Shivani/Desktop/SelinumDemo/src/main/resources/chromedriver.exe");
-        WebDriver webDriver = new ChromeDriver();
-
-        //open test page
-        String url = "http://the-internet.herokuapp.com/login";
-        webDriver.get(url);
-
-        //maximize window
-        webDriver.manage().window().fullscreen();
 
         //verification
         String actualUrl = "http://the-internet.herokuapp.com/login";
@@ -84,9 +89,7 @@ public class LoginTest {
 
         //verification for incorrect username
         WebElement errorMessageElement = webDriver.findElement(By.id("flash"));
-        ;
         String actualMessage = errorMessageElement.getText();
         Assert.assertEquals(expectedMessage, actualMessage);
-        webDriver.quit();
     }
 }

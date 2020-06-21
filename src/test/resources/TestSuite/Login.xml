@@ -1,42 +1,45 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="NegativeTest" verbose="1">
+<suite name="Login" verbose="1">
 
-    <test name="PositiveTest">
-        <groups>
-            <run>
-                <include name="positiveTest"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.bl.selenium.LoginTest"/>
-        </classes>
-    </test>
-
-    <test name="userNameTest">
-        <parameter name="username" value="incorrectusername"/>
+    <test name="PositiveTests">
+        <parameter name="username" value="tomsmith"/>
         <parameter name="password" value="SuperSecretPassword!"/>
-        <parameter name="expectedMessage" value="Your username is invalid! ×"/>
+        <parameter name="expectedMessage"
+                   value="You logged into a secure area! ×"/>
+
         <classes>
             <class name="com.bl.selenium.LoginTest">
                 <methods>
-                    <include name="negativeLoginTest"/>
-
+                    <include name="positiveLoginTest"/>
                 </methods>
             </class>
-
         </classes>
     </test>
 
-    <test name="passwordTest">
-        <parameter name="username" value="tomsmith"/>
-        <parameter name="password" value="kajcdkb;c"/>
-        <parameter name="expectedMessage" value="Your password is invalid! ×"/>
+    <test name="NegativeUsernameTests">
+        <parameter name="username" value="incorrectUsername"/>
+        <parameter name="password" value="SuperSecretPassword!"/>
+        <parameter name="expectedMessage"
+                   value="Your username is invalid! ×"/>
         <classes>
             <class name="com.bl.selenium.LoginTest">
                 <methods>
                     <include name="negativeLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
+    <test name="NegativePasswordTests">
+        <parameter name="username" value="tomsmith"/>
+        <parameter name="password" value="incorrectPassword!"/>
+        <parameter name="expectedMessage"
+                   value="Your password is invalid! ×"/>
+        <classes>
+            <class name="com.bl.selenium.LoginTest">
+                <methods>
+                    <include name="negativeLoginTest"/>
                 </methods>
             </class>
         </classes>
