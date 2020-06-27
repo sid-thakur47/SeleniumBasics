@@ -56,5 +56,17 @@ public class AlertAndPopup extends Base {
             e.printStackTrace();
         }
     }
+    public void uploadPopUp() {
+        try {
+            webDriver.get("http://the-internet.herokuapp.com/upload");
+            WebElement element = webDriver.findElement(By.xpath("//input[@id='file-upload']"));
+            element.sendKeys("C:/Users/Shivani/Downloads/download.png");
+            Thread.sleep(10000);
+            webDriver.findElement(By.xpath("//input[@id='file-submit']")).click();
+            Thread.sleep(1000);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

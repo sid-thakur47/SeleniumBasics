@@ -68,6 +68,12 @@ public class SeleniumBasicsTest extends Base {
         handling.clickAlert();
         handling.clickOkAndCancelAlert();
         handling.inputOnAlert();
+        //handling.uploadPopUp();
+    }
+
+    @Test
+    public void popUpHandling() {
+        handling.uploadPopUp();
     }
 
     @AfterMethod
