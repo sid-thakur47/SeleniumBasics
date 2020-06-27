@@ -26,6 +26,9 @@ public class LoginTest {
 
         //maximize window
         webDriver.manage().window().fullscreen();
+
+        String title = webDriver.getTitle();
+        System.out.println(title);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -52,6 +55,7 @@ public class LoginTest {
 
         WebElement loginButton = webDriver.findElement(By.tagName("button"));
         loginButton.click();
+
         //success message
         WebElement successMessage = webDriver.findElement(By.cssSelector("div#flash"));
         successMessage.isDisplayed();
