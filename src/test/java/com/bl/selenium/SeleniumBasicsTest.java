@@ -3,6 +3,7 @@ package com.bl.selenium;
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
 import com.bl.selenium.robot.RobotBasic;
+import com.bl.selenium.windowhandling.AlertAndPopup;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,12 +13,14 @@ import java.awt.*;
 public class SeleniumBasicsTest extends Base {
     Action action;
     RobotBasic robot;
+    AlertAndPopup handling;
 
     @BeforeMethod
     public void setup() throws AWTException {
         initializeBase();
-        robot=new RobotBasic();
+        robot = new RobotBasic();
         action = new Action();
+        handling = new AlertAndPopup();
     }
 
     @Test
@@ -59,6 +62,14 @@ public class SeleniumBasicsTest extends Base {
     public void copyText() {
         robot.copyToNotePad();
     }
+
+    @Test
+    public void alertHandling() {
+        handling.clickAlert();
+        handling.clickOkAndCancelAlert();
+        handling.inputOnAlert();
+    }
+
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
