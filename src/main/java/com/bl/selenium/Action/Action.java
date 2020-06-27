@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 public class Action extends Base {
     Actions actions = new Actions(webDriver);
 
-    public static void mouseClick() throws InterruptedException {
+    public  void mouseClick() throws InterruptedException {
         webDriver.get("https://www.google.com");
         Thread.sleep(1000);
         WebElement imLucky = webDriver.findElement(By.xpath("//div[@class='FPdoLc tfB0Bf']//input[@class='RNmpXc']"));
@@ -34,9 +34,8 @@ public class Action extends Base {
     public void rightClick() {
         webDriver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
         WebElement context = webDriver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
-        WebElement delete = webDriver.findElement(By.xpath("//span[contains(text(),'Delete')]"));
+        //WebElement delete = webDriver.findElement(By.xpath("//span[contains(text(),'Delete')]"));
         actions.contextClick(context).perform();
-        //delete.click();
     }
     public void mouseOver() throws InterruptedException {
         try {

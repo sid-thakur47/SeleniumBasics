@@ -2,16 +2,21 @@ package com.bl.selenium;
 
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
+import com.bl.selenium.robot.RobotBasic;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ActionTest extends Base {
+import java.awt.*;
+
+public class SeleniumBasicsTest extends Base {
     Action action;
+    RobotBasic robot;
 
     @BeforeMethod
-    public void setup() {
+    public void setup() throws AWTException {
         initializeBase();
+        robot=new RobotBasic();
         action = new Action();
     }
 
@@ -45,6 +50,15 @@ public class ActionTest extends Base {
         action.scroll();
     }
 
+    @Test
+    public void robotTest() throws AWTException, InterruptedException {
+        robot.robotOperations();
+    }
+
+    @Test
+    public void copyText() {
+        robot.copyToNotePad();
+    }
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
