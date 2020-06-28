@@ -2,6 +2,7 @@ package com.bl.selenium;
 
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
+import com.bl.selenium.iframe.Frames;
 import com.bl.selenium.robot.RobotBasic;
 import com.bl.selenium.select.SelectClass;
 import com.bl.selenium.windowhandling.AlertAndPopup;
@@ -16,6 +17,7 @@ public class SeleniumBasicsTest extends Base {
     RobotBasic robot;
     AlertAndPopup handling;
     SelectClass select;
+    Frames frame;
 
     @BeforeMethod
     public void setup() throws AWTException {
@@ -24,6 +26,7 @@ public class SeleniumBasicsTest extends Base {
         action = new Action();
         select = new SelectClass();
         handling = new AlertAndPopup();
+        frame=new Frames();
     }
 
     @Test
@@ -65,6 +68,11 @@ public class SeleniumBasicsTest extends Base {
         select.multiSelect("Florida", "New York", "Texas");
     }
 
+    @Test
+    public void testFrames() {
+        frame.frame();
+
+    }
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
