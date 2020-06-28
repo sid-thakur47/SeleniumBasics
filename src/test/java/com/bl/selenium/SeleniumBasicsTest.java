@@ -52,8 +52,9 @@ public class SeleniumBasicsTest extends Base {
     }
 
     @Test
-    public void popUpHandling() {
+    public void popUpHandling() throws InterruptedException {
         handling.uploadPopUp();
+        handling.popUp();
     }
 
     @Test
@@ -63,6 +64,7 @@ public class SeleniumBasicsTest extends Base {
         select.selectByOptions();
         select.multiSelect("Florida", "New York", "Texas");
     }
+
     @AfterMethod
     public void tearDown() {
         webDriver.quit();

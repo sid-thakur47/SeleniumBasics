@@ -5,6 +5,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class AlertAndPopup extends Base {
 
     public void clickAlert() {
@@ -67,6 +70,25 @@ public class AlertAndPopup extends Base {
         } catch(InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void popUp() throws InterruptedException {
+
+        webDriver.get("https://www.seleniumeasy.com/test/window-popup-modal-demo.html");
+        WebElement element = webDriver.findElement(By.xpath("//a[contains(text(),'Follow On Twitter')]"));
+        element.click();
+        Thread.sleep(1000);
+        Set<String> handles = webDriver.getWindowHandles(); // get all window handles
+        Iterator<String> iterator = handles.iterator();
+        String subWindowHandler = null;
+        while(iterator.hasNext()) {
+            subWindowHandler = iterator.next();
+        }
+        webDriver.switchTo().window(subWindowHandler);
+        WebElement element1 = webDriver.findElement(By.xpath("//span[contains(text(),'No, thanks')]"));
+        element1.click();
+        Thread.sleep(5000);
+        webDriver.close();
     }
 }
 
