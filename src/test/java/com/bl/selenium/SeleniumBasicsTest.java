@@ -20,6 +20,7 @@ public class SeleniumBasicsTest extends Base {
     SelectClass select;
     Frames frame;
     OTP otp;
+
     @BeforeMethod
     public void setup() throws AWTException {
         initializeBase();

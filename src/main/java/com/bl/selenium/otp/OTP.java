@@ -12,8 +12,8 @@ import java.util.stream.StreamSupport;
 
 public class OTP extends Base {
 
-    private static final String ACCOUNT_SID = "AC491b725dc226d0e3f3f77eb524d0d0da";
-    private String TOKEN = "bee4d2097da96b0b23e27c66849174b8";
+    private static final String ACCOUNT_SID = properties.getProperty("id");
+    private String TOKEN = properties.getProperty("Token");
 
 
     public static String getMessage() {
