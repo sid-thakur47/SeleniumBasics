@@ -3,6 +3,7 @@ package com.bl.selenium;
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
 import com.bl.selenium.iframe.Frames;
+import com.bl.selenium.otp.OTP;
 import com.bl.selenium.robot.RobotBasic;
 import com.bl.selenium.select.SelectClass;
 import com.bl.selenium.windowhandling.AlertAndPopup;
@@ -18,7 +19,7 @@ public class SeleniumBasicsTest extends Base {
     AlertAndPopup handling;
     SelectClass select;
     Frames frame;
-
+    OTP otp;
     @BeforeMethod
     public void setup() throws AWTException {
         initializeBase();
@@ -26,14 +27,15 @@ public class SeleniumBasicsTest extends Base {
         action = new Action();
         select = new SelectClass();
         handling = new AlertAndPopup();
-        frame=new Frames();
+        frame = new Frames();
+        otp = new OTP();
     }
 
     @Test
     public void actionClassTest() throws InterruptedException {
         action.dragDrop();
         action.rightClick();
-        action.mouseOver();
+        action.mouseHover();
         action.doubleClick();
         action.mouseClick();
         action.scroll();
@@ -45,13 +47,11 @@ public class SeleniumBasicsTest extends Base {
         robot.copyToNotePad();
     }
 
-
     @Test
     public void alertHandling() {
         handling.clickAlert();
         handling.clickOkAndCancelAlert();
         handling.inputOnAlert();
-        handling.uploadPopUp();
     }
 
     @Test
@@ -69,13 +69,17 @@ public class SeleniumBasicsTest extends Base {
     }
 
     @Test
-    public void testFrames() {
+    public void framesTest() {
         frame.frame();
-
     }
+
+    @Test
+    public void registerUsingOTP() {
+        otp.amazonRegistration("siddhesh", "abcd@12345");
+    }
+
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
     }
 }
-

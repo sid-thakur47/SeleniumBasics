@@ -80,11 +80,11 @@ public class AlertAndPopup extends Base {
         Thread.sleep(1000);
         Set<String> handles = webDriver.getWindowHandles(); // get all window handles
         Iterator<String> iterator = handles.iterator();
-        String subWindowHandler = null;
+        String subWindow = null;
         while(iterator.hasNext()) {
-            subWindowHandler = iterator.next();
+            subWindow = iterator.next();
         }
-        webDriver.switchTo().window(subWindowHandler);
+        webDriver.switchTo().window(subWindow);
         WebElement element1 = webDriver.findElement(By.xpath("//span[contains(text(),'No, thanks')]"));
         element1.click();
         Thread.sleep(5000);

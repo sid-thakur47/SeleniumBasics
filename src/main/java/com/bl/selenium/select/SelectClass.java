@@ -7,13 +7,14 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.lang.reflect.Array;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class SelectClass extends Base {
     String day = "//select[@id='day']//option";
     String month = "//select[@name='birthday_month']//option";
     String year = "//select[@id='year']//option";
 
-    public static void selectFromDropDown(WebElement element, String value) {
+    public  void selectFromDropDown(WebElement element, String value) {
         Select select = new Select(element);
         select.selectByVisibleText(value);
     }
@@ -76,10 +77,10 @@ public class SelectClass extends Base {
             WebElement webElement = webDriver.findElement(By.xpath("//select[@name='States']"));
             Select select = new Select(webElement);
             boolean multiple = select.isMultiple();
-            System.out.println("Elements" + webElement);
             if(multiple) {
-                for(int i = 0; i <= values.length - 1; i++) {
-                    select.selectByValue((String) Array.get(values, i));
+                for(int i = 0; i <= values.length-1; i++) {
+                    String s = (String) Array.get(values, i);
+                    select.selectByValue(s);
                 }
                 Thread.sleep(1000);
             }
