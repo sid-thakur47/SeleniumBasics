@@ -2,6 +2,7 @@ package com.bl.selenium;
 
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
+import com.bl.selenium.exception.Exceptions;
 import com.bl.selenium.iframe.Frames;
 import com.bl.selenium.otp.OTP;
 import com.bl.selenium.robot.RobotBasic;
@@ -24,6 +25,7 @@ public class SeleniumBasicsTest extends Base {
     SelectClass select;
     Frames frame;
     OTP otp;
+    Exceptions exceptions;
 
     @BeforeMethod
     public void setup() throws AWTException {
@@ -35,6 +37,7 @@ public class SeleniumBasicsTest extends Base {
         handling = new AlertAndPopup();
         frame = new Frames();
         otp = new OTP();
+        exceptions = new Exceptions();
     }
 
    @Test
@@ -91,6 +94,13 @@ public class SeleniumBasicsTest extends Base {
         otp.amazonRegistration("siddhesh", "abcd@12345");
     }
 
+    @Test
+    public void handleExceptions() throws InterruptedException {
+        exceptions.elementNotVisible();
+        exceptions.timeOutTest();
+        exceptions.noSuchElement();
+        exceptions.staleElement();
+    }
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
