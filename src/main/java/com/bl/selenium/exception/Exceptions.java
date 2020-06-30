@@ -8,16 +8,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import static java.lang.Thread.sleep;
+
 public class Exceptions extends Base {
 
-    public void exception() {
+    public void initialize() {
         webDriver.get("http://the-internet.herokuapp.com/dynamic_loading/1");
         WebElement startButton = webDriver.findElement(By.xpath("//div[@id='start']//button"));
         startButton.click();
     }
 
     public void elementNotVisible() {
-        exception();
+        initialize();
         WebElement finishElement = webDriver.findElement(By.id("finish"));
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElements(finishElement));
@@ -26,17 +28,18 @@ public class Exceptions extends Base {
     }
 
     public void timeOutTest() throws InterruptedException {
-        exception();
+        initialize();
         WebElement finishElement = webDriver.findElement(By.id("finish"));
+
         WebDriverWait wait = new WebDriverWait(webDriver, 2);
         try {
-
-        } catch(TimeoutException e) {
-            System.out.println(e.toString());
-            Thread.sleep(3000);
+            wait.until(ExpectedConditions.visibilityOf(finishElement));
+        } catch(TimeoutException exception) {
+            System.out.println("Exception catched: " + exception.getMessage());
+            sleep(3000);
         }
         String finishText = finishElement.getText();
-        Assert.assertEquals(finishText, "Hello World!");
+        Assert.assertTrue(finishText.contains("Hello World!"));
     }
 
     public void noSuchElement() {

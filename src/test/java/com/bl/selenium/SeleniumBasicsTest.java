@@ -40,25 +40,30 @@ public class SeleniumBasicsTest extends Base {
         exceptions = new Exceptions();
     }
 
-   @Test
+    @Test(priority = 1)
     public void actionClassTest() throws InterruptedException {
         logger.info("All Action class Test");
         action.dragDrop();
+        Thread.sleep(5000);
         action.rightClick();
+        Thread.sleep(5000);
         action.mouseHover();
+        Thread.sleep(5000);
         action.doubleClick();
+        Thread.sleep(5000);
         action.mouseClick();
+        Thread.sleep(5000);
         action.scroll();
     }
 
-    @Test
+    @Test(priority = 2)
     public void robotTest() throws AWTException, InterruptedException {
         logger.info("All Action class Test");
         robot.robotOperations();
         robot.copyToNotePad();
     }
 
-    @Test
+    @Test(priority = 3)
     public void alertHandling() {
         logger.info("All Alert Handling Test");
         handling.clickAlert();
@@ -66,14 +71,14 @@ public class SeleniumBasicsTest extends Base {
         handling.inputOnAlert();
     }
 
-    @Test
+    @Test(priority = 4)
     public void popUpHandling() throws InterruptedException {
         logger.info("All frames Handling Test");
         handling.uploadPopUp();
         handling.popUp();
     }
 
-   @Test
+    @Test(priority = 5)
     public void dropDownTest() {
         logger.info("All drop down test");
         select.dropDown();
@@ -82,25 +87,26 @@ public class SeleniumBasicsTest extends Base {
         select.multiSelect("Florida", "New York", "Texas");
     }
 
-    @Test
+    @Test(priority = 6)
     public void framesTest() {
         logger.info("All frame handling test");
         frame.frame();
     }
 
-    @Test
+    @Test(priority = 7)
     public void registerUsingOTP() {
         logger.info("amazon registration");
         otp.amazonRegistration("siddhesh", "abcd@12345");
     }
 
-    @Test
+    @Test(priority = 8)
     public void handleExceptions() throws InterruptedException {
         exceptions.elementNotVisible();
         exceptions.timeOutTest();
         exceptions.noSuchElement();
         exceptions.staleElement();
     }
+
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
