@@ -15,7 +15,6 @@ public class OTP extends Base {
     private static final String ACCOUNT_SID = properties.getProperty("id");
     private String TOKEN = properties.getProperty("Token");
 
-
     public static String getMessage() {
         return getMessages()
                 .filter(m -> m.getTo().equals("+12029329389")).map(Message::getBody).findFirst()
