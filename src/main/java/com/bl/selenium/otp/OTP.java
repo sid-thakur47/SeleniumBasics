@@ -13,7 +13,7 @@ import java.util.stream.StreamSupport;
 public class OTP extends Base {
 
     private static final String ACCOUNT_SID = properties.getProperty("id");
-    private String TOKEN = properties.getProperty("Token");
+    private String TOKEN = properties.getProperty("token");
 
     public static String getMessage() {
         return getMessages()
