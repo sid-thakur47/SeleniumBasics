@@ -13,9 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class FileDownload extends Base {
     File folder;
@@ -23,8 +24,11 @@ public class FileDownload extends Base {
 
     @BeforeMethod
     public void setup() {
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh-mm-ss");
+        String time = dateFormat.format(now);
         WebDriverManager.chromedriver().setup();
-        folder = new File(UUID.randomUUID().toString());
+        folder = new File(time);
         folder.mkdir();
         ChromeOptions options = new ChromeOptions();
         Map<String,Object> pref = new HashMap<>();
