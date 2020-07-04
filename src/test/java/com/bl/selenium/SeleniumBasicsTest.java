@@ -2,6 +2,7 @@ package com.bl.selenium;
 
 import com.bl.selenium.Action.Action;
 import com.bl.selenium.base.Base;
+import com.bl.selenium.brokenlinks.BrokenLink;
 import com.bl.selenium.exception.Exceptions;
 import com.bl.selenium.iframe.Frames;
 import com.bl.selenium.otp.OTP;
@@ -15,6 +16,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class SeleniumBasicsTest extends Base {
     static Logger logger = LogManager.getLogger(SeleniumBasicsTest.class);
@@ -26,6 +28,7 @@ public class SeleniumBasicsTest extends Base {
     Frames frame;
     OTP otp;
     Exceptions exceptions;
+    BrokenLink link;
 
     @BeforeMethod
     public void setup() throws AWTException {
@@ -38,6 +41,7 @@ public class SeleniumBasicsTest extends Base {
         frame = new Frames();
         otp = new OTP();
         exceptions = new Exceptions();
+        link=new BrokenLink();
     }
 
     @Test(priority = 1)
@@ -105,6 +109,10 @@ public class SeleniumBasicsTest extends Base {
         exceptions.timeOutTest();
         exceptions.noSuchElement();
         exceptions.staleElement();
+    }
+    @Test
+    public void brokenLinkTest() throws IOException {
+        link.brokenLinks();
     }
 
     @AfterMethod
