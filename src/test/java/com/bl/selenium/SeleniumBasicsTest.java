@@ -8,7 +8,9 @@ import com.bl.selenium.iframe.Frames;
 import com.bl.selenium.otp.OTP;
 import com.bl.selenium.robot.RobotBasic;
 import com.bl.selenium.select.SelectClass;
+import com.bl.selenium.tooltip.ToolTip;
 import com.bl.selenium.windowhandling.AlertAndPopup;
+import javafx.scene.control.Tooltip;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
@@ -29,6 +31,7 @@ public class SeleniumBasicsTest extends Base {
     OTP otp;
     Exceptions exceptions;
     BrokenLink link;
+    ToolTip tip;
 
     @BeforeMethod
     public void setup() throws AWTException {
@@ -42,6 +45,7 @@ public class SeleniumBasicsTest extends Base {
         otp = new OTP();
         exceptions = new Exceptions();
         link=new BrokenLink();
+        tip=new ToolTip();
     }
 
     @Test(priority = 1)
@@ -115,6 +119,10 @@ public class SeleniumBasicsTest extends Base {
         link.brokenLinks();
     }
 
+    @Test
+    public void toolTipTest() {
+        tip.toolTip();
+    }
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
