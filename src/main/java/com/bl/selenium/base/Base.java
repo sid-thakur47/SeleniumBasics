@@ -3,7 +3,6 @@ package com.bl.selenium.base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;

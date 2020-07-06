@@ -4,10 +4,8 @@ import com.bl.selenium.base.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import java.lang.reflect.Array;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class SelectClass extends Base {
     String day = "//select[@id='day']//option";

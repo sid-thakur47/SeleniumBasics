@@ -7,15 +7,15 @@ import com.bl.selenium.exception.Exceptions;
 import com.bl.selenium.iframe.Frames;
 import com.bl.selenium.otp.OTP;
 import com.bl.selenium.robot.RobotBasic;
-import com.bl.selenium.select.SelectClass;
+
 import com.bl.selenium.tooltip.ToolTip;
 import com.bl.selenium.windowhandling.AlertAndPopup;
-import javafx.scene.control.Tooltip;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import com.bl.selenium.select.SelectClass;
 
 import java.awt.*;
 import java.io.IOException;
