@@ -19,11 +19,11 @@ public class AlertAndPopup extends SeleniumBasicBase {
             WebElement element = webDriver.findElement(By.xpath("//button[contains(text(),'Click for JS Alert')]"));
             element.click();
             Thread.sleep(1000);
-            Alert alert = webDriver.switchTo().alert();
+            Alert alert = webDriver.switchTo().alert();//switch to alert
             Thread.sleep(1000);
             String alertMessage = webDriver.switchTo().alert().getText();
-            System.out.println(alertMessage);
-            alert.accept();
+            System.out.println(alertMessage);//print alert message
+            alert.accept();//accept the alert
             Thread.sleep(5000);
         } catch(InterruptedException e) {
             e.printStackTrace();
@@ -34,15 +34,15 @@ public class AlertAndPopup extends SeleniumBasicBase {
             webDriver.get("http://the-internet.herokuapp.com/javascript_alerts");
             WebElement element = webDriver.findElement(By.xpath("//button[contains(text(),'Click for JS Confirm')]"));
             element.click();
-            Alert alert = webDriver.switchTo().alert();
+            Alert alert = webDriver.switchTo().alert();//switch to alert
             String alertMessage = webDriver.switchTo().alert().getText();
-            System.out.println(alertMessage);
+            System.out.println(alertMessage);//print alert message
             Thread.sleep(1000);
-            alert.accept();
+            alert.accept();//accept the alert
             Thread.sleep(1000);
             element.click();
             Thread.sleep(1000);
-            alert.dismiss();
+            alert.dismiss();//dismiss the alert
             Thread.sleep(1000);
         } catch(InterruptedException e) {
             e.printStackTrace();
@@ -53,9 +53,9 @@ public class AlertAndPopup extends SeleniumBasicBase {
             webDriver.get("http://the-internet.herokuapp.com/javascript_alerts");
             WebElement element = webDriver.findElement(By.xpath("//button[contains(text(),'Click for JS Prompt')]"));
             element.click();
-            Alert alert = webDriver.switchTo().alert();
+            Alert alert = webDriver.switchTo().alert();//switch to alert
             Thread.sleep(1000);
-            alert.sendKeys("hello");
+            alert.sendKeys("hello");//send input to alert
             Thread.sleep(10000);
             alert.accept();
         } catch(InterruptedException e) {
@@ -66,9 +66,9 @@ public class AlertAndPopup extends SeleniumBasicBase {
         try {
             webDriver.get("http://the-internet.herokuapp.com/upload");
             WebElement element = webDriver.findElement(By.xpath("//input[@id='file-upload']"));
-            element.sendKeys("C:/Users/Shivani/Downloads/download.png");
+            element.sendKeys("C:/Users/Shivani/Downloads/download.png");//send image path
             Thread.sleep(10000);
-            webDriver.findElement(By.xpath("//input[@id='file-submit']")).click();
+            webDriver.findElement(By.xpath("//input[@id='file-submit']")).click();//click on upload
             Thread.sleep(1000);
         } catch(InterruptedException e) {
             e.printStackTrace();
@@ -76,18 +76,17 @@ public class AlertAndPopup extends SeleniumBasicBase {
     }
 
     public void popUp() throws InterruptedException {
-
         webDriver.get("https://www.seleniumeasy.com/test/window-popup-modal-demo.html");
         WebElement element = webDriver.findElement(By.xpath("//a[contains(text(),'Follow On Twitter')]"));
         element.click();
         Thread.sleep(1000);
         Set<String> handles = webDriver.getWindowHandles(); // get all window handles
-        Iterator<String> iterator = handles.iterator();
+        Iterator<String> iterator = handles.iterator();//iterate over handles
         String subWindow = null;
         while(iterator.hasNext()) {
-            subWindow = iterator.next();
+            subWindow = iterator.next();//iterate till child window
         }
-        webDriver.switchTo().window(subWindow);
+        webDriver.switchTo().window(subWindow);//switch to opo up window
         WebElement element1 = webDriver.findElement(By.xpath("//span[contains(text(),'No, thanks')]"));
         element1.click();
         Thread.sleep(5000);
@@ -99,9 +98,9 @@ public class AlertAndPopup extends SeleniumBasicBase {
             initializeBase();
             webDriver.get("https://www.bookswagon.com/login");
             WebElement userName = webDriver.findElement(By.xpath("//input[@id='ctl00_phBody_SignIn_txtEmail']"));
-            userName.sendKeys(properties.getProperty("email"));
+            userName.sendKeys(properties.getProperty("email"));//input email id
             WebElement password = webDriver.findElement(By.xpath("//input[@id='ctl00_phBody_SignIn_txtPassword']"));
-            password.sendKeys(properties.getProperty("bpass"));
+            password.sendKeys(properties.getProperty("bpass"));//input password
             Thread.sleep(5000);
             webDriver.findElement(By.xpath("//input[@name='ctl00$phBody$SignIn$btnLogin']")).click();
             Thread.sleep(5000);
@@ -111,7 +110,7 @@ public class AlertAndPopup extends SeleniumBasicBase {
             WebElement element = webDriver.findElement(By.xpath("//iframe[@name='cbox1594058220570']"));
             WebDriverWait wb=new WebDriverWait(webDriver,10);
             wb.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div//iframe[@name='cbox1594058220570']")));
-            webDriver.switchTo().frame(element);
+            webDriver.switchTo().frame(element);//switch to frame
             Thread.sleep(5000);
             webDriver.findElement(By.xpath("//a[@id='BookCart_lvCart_ctrl0_imgDelete']")).click();
             Thread.sleep(5000);

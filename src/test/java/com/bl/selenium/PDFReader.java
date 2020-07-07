@@ -19,12 +19,16 @@ public class PDFReader extends SeleniumBasicBase {
         initializeBase();
         webDriver.get(properties.getProperty("pdfurl"));
         String currentUrl = webDriver.getCurrentUrl();
+        // url initialization
         URL url=new URL(currentUrl);
         InputStream is=url.openStream();
         BufferedInputStream fileParse=new BufferedInputStream(is);
+        //load as pdf document
         PDDocument pd=PDDocument.load(fileParse);
+        //get pdf document as text
         String pdfContent = new PDFTextStripper().getText(pd);
         System.out.println(pdfContent);
+        //verify the content of pdf
         Assert.assertTrue(pdfContent.contains("Employment History"));
         Assert.assertTrue(pdfContent.contains("Education"));
     }

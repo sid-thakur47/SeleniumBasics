@@ -24,12 +24,14 @@ public class FileDownload extends SeleniumBasicBase {
 
     @BeforeMethod
     public void setup() {
+        //to set folder name according to date
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh-mm-ss");
         String time = dateFormat.format(now);
         WebDriverManager.chromedriver().setup();
         folder = new File(time);
         folder.mkdir();
+        //setting chrome options and capabilities
         ChromeOptions options = new ChromeOptions();
         Map<String,Object> pref = new HashMap<>();
         pref.put("profile.default_content_settings.popups", 0);
@@ -41,13 +43,14 @@ public class FileDownload extends SeleniumBasicBase {
     }
     @Test
     public void downloadTest() throws InterruptedException {
-        driver.get("http://the-internet.herokuapp.com/download");
-        driver.findElement(By.xpath("//a[contains(text(),'filler.txt')]")).click();
+        driver.get("http://the-internet.herokuapp.com/download");//get url
+        driver.findElement(By.xpath("//a[contains(text(),'filler.txt')]")).click();//click on element to download
         Thread.sleep(5000);
-        File[] files = folder.listFiles();
-        Assert.assertTrue(files.length > 0);
+        File[] files = folder.listFiles();//store to files
+        Assert.assertTrue(files.length > 0);//verify the file
     }
 
+    //delete file from folder after test
     @AfterMethod
     public void tearDown() {
         driver.quit();

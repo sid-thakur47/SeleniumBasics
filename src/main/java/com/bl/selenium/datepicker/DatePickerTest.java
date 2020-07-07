@@ -8,11 +8,11 @@ import org.testng.annotations.Test;
 public class DatePickerTest extends SeleniumBasicBase {
     @Test
     public void testDaTePicker() throws InterruptedException {
-        initializeBase();
-        webDriver.get("http://demo.automationtesting.in/Datepicker.html");
-        JavascriptExecutor je = webDriver;
-        je.executeScript("document.getElementById('datepicker1').value= '09/9/1995'");
+        initializeBase();//initialize chrome browser
+        webDriver.get("http://demo.automationtesting.in/Datepicker.html");//get URL
+        JavascriptExecutor je = webDriver;//type cast to java script object
+        je.executeScript("document.getElementById('datepicker1').value= '09/9/1995'");//javascript to pick a Date
         Thread.sleep(3000);
-        webDriver.quit();
+        webDriver.quit();//close browser
     }
 }

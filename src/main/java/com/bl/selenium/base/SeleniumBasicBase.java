@@ -9,10 +9,11 @@ import java.util.Properties;
 
 public class SeleniumBasicBase {
 
-    public static ChromeDriver webDriver;
-    public static Properties properties;
-    public SeleniumBasicBase() {
+    public static ChromeDriver webDriver;//instance of Chrome driver
+    public static Properties properties;//instance of properties
 
+    //initialization and loading of file to access private data
+    public SeleniumBasicBase() {
         properties = new Properties();
         try {
             FileInputStream input = new FileInputStream("C:/Users/Shivani/Desktop/Backup/Input.csv");
@@ -22,6 +23,7 @@ public class SeleniumBasicBase {
         }
     }
 
+    //initialization of chrome browser
     public static void initializeBase() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
