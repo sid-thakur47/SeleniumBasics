@@ -1,13 +1,13 @@
 package com.bl.selenium;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import com.bl.selenium.poi.DataDriven;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class DataDrivenTest extends Base {
+public class DataDrivenTest extends SeleniumBasicBase {
 
     @Test(dataProvider = "Facebook login")
     public static void facebookLogin(String username, String password) throws InterruptedException {

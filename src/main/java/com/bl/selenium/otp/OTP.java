@@ -1,6 +1,6 @@
 package com.bl.selenium.otp;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import com.twilio.Twilio;
 import com.twilio.base.ResourceSet;
 import com.twilio.rest.api.v2010.account.Message;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-public class OTP extends Base {
+public class OTP extends SeleniumBasicBase {
 
     private static final String ACCOUNT_SID = properties.getProperty("id");
     private String TOKEN = properties.getProperty("token");

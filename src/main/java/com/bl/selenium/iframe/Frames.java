@@ -1,9 +1,9 @@
 package com.bl.selenium.iframe;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 
-public class Frames extends Base {
+public class Frames extends SeleniumBasicBase {
 
     public void frame() {
         try {

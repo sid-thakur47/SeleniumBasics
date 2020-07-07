@@ -1,6 +1,6 @@
 package com.bl.selenium.robot;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class RobotBasic extends Base {
+public class RobotBasic extends SeleniumBasicBase {
     Robot robot = new Robot();
 
     public RobotBasic() throws AWTException {

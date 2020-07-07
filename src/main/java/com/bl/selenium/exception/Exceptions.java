@@ -1,6 +1,6 @@
 package com.bl.selenium.exception;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import static java.lang.Thread.sleep;
 
-public class Exceptions extends Base {
+public class Exceptions extends SeleniumBasicBase {
 
     public void initialize() {
         webDriver.get("http://the-internet.herokuapp.com/dynamic_loading/1");

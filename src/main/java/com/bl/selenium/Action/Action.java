@@ -1,13 +1,13 @@
 package com.bl.selenium.Action;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class Action extends Base {
+public class Action extends SeleniumBasicBase {
     Actions actions = new Actions(webDriver);
 
     public  void mouseClick() throws InterruptedException {

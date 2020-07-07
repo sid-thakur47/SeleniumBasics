@@ -1,13 +1,13 @@
 package com.bl.selenium.select;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.lang.reflect.Array;
 import java.util.List;
 
-public class SelectClass extends Base {
+public class SelectClass extends SeleniumBasicBase {
     String day = "//select[@id='day']//option";
     String month = "//select[@name='birthday_month']//option";
     String year = "//select[@id='year']//option";

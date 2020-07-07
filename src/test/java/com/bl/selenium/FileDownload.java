@@ -1,6 +1,6 @@
 package com.bl.selenium;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileDownload extends Base {
+public class FileDownload extends SeleniumBasicBase {
     File folder;
     WebDriver driver;
 

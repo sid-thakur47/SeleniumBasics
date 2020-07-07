@@ -1,6 +1,6 @@
 package com.bl.selenium.windowhandling;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Iterator;
 import java.util.Set;
 
-public class AlertAndPopup extends Base {
+public class AlertAndPopup extends SeleniumBasicBase {
 
     public void clickAlert() {
         try {

@@ -1,6 +1,6 @@
 package com.bl.selenium;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.testng.Assert;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-public class PDFReader extends Base {
+public class PDFReader extends SeleniumBasicBase {
 
     @Test
     public void readPDF() throws IOException {

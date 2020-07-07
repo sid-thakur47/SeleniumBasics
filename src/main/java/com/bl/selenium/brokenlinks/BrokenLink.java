@@ -1,6 +1,6 @@
 package com.bl.selenium.brokenlinks;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrokenLink extends Base {
+public class BrokenLink extends SeleniumBasicBase {
 
     @Test
     public void brokenLinks() throws IOException {

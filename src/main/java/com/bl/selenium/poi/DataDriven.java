@@ -1,13 +1,13 @@
 package com.bl.selenium.poi;
 
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 
-public class DataDriven extends Base {
+public class DataDriven extends SeleniumBasicBase {
 
     XSSFWorkbook workbook;
     XSSFSheet sheet;

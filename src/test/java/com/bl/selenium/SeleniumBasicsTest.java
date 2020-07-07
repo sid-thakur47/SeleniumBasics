@@ -1,7 +1,7 @@
 package com.bl.selenium;
 
 import com.bl.selenium.Action.Action;
-import com.bl.selenium.base.Base;
+import com.bl.selenium.base.SeleniumBasicBase;
 import com.bl.selenium.brokenlinks.BrokenLink;
 import com.bl.selenium.exception.Exceptions;
 import com.bl.selenium.iframe.Frames;
@@ -20,7 +20,7 @@ import com.bl.selenium.select.SelectClass;
 import java.awt.*;
 import java.io.IOException;
 
-public class SeleniumBasicsTest extends Base {
+public class SeleniumBasicsTest extends SeleniumBasicBase {
     static Logger logger = LogManager.getLogger(SeleniumBasicsTest.class);
 
     Action action;

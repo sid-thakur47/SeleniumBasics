@@ -7,11 +7,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Base {
+public class SeleniumBasicBase {
 
     public static ChromeDriver webDriver;
     public static Properties properties;
-    public Base() {
+    public SeleniumBasicBase() {
 
         properties = new Properties();
         try {
