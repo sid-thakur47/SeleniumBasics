@@ -3,11 +3,12 @@ package com.bl.selenium.multibrowser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 public class MultiBrowser {
     WebDriver driver = null;
@@ -30,7 +31,15 @@ public class MultiBrowser {
         driver.get("http://www.google.com");
         String title = driver.getTitle();
         System.out.println(title);
-        Assert.assertEquals("Google",title);
+        Assert.assertEquals("Google", title);
+    }
+
+    @Test
+    void browserTest2() {
+        driver.get("http://www.youtube.com");
+        String title = driver.getTitle();
+        System.out.println(title);
+        Assert.assertEquals("YouTube", title);
     }
 
     @AfterMethod
